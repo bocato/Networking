@@ -7,9 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E50ADF1521F90CAF002429A2 /* NetworkingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50ADF1421F90CAF002429A2 /* NetworkingOperation.swift */; };
+		E50ADF1B21F90E10002429A2 /* URLSessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50ADF1A21F90E10002429A2 /* URLSessionDispatcher.swift */; };
+		E50ADF1D21F914FA002429A2 /* NetworkingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50ADF1C21F914FA002429A2 /* NetworkingResponse.swift */; };
+		E50ADF2021F92BEF002429A2 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50ADF1F21F92BEF002429A2 /* Parser.swift */; };
 		E5C8C4D421E03038006CF79B /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C8C4CA21E03038006CF79B /* Networking.framework */; };
 		E5C8C4D921E03038006CF79B /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4D821E03038006CF79B /* NetworkingTests.swift */; };
 		E5C8C4DB21E03038006CF79B /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = E5C8C4CD21E03038006CF79B /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5C8C4E921E030AE006CF79B /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4E821E030AE006CF79B /* URLHelper.swift */; };
+		E5C8C4EC21E030F1006CF79B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4EB21E030F1006CF79B /* Request.swift */; };
+		E5C8C4EE21E0311B006CF79B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4ED21E0311B006CF79B /* Response.swift */; };
+		E5C8C4F021E0313D006CF79B /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4EF21E0313D006CF79B /* NetworkingError.swift */; };
+		E5C8C4F321E03188006CF79B /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4F221E03188006CF79B /* NSErrorExtensions.swift */; };
+		E5C8C4F521E031AF006CF79B /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4F421E031AF006CF79B /* DataExtensions.swift */; };
+		E5C8C4F821E0341D006CF79B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4F721E0341D006CF79B /* Service.swift */; };
+		E5C8C4FA21E03449006CF79B /* NetworkDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4F921E03449006CF79B /* NetworkDispatcher.swift */; };
+		E5C8C4FC21E03472006CF79B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C4FB21E03472006CF79B /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +36,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E50ADF1421F90CAF002429A2 /* NetworkingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingOperation.swift; sourceTree = "<group>"; };
+		E50ADF1A21F90E10002429A2 /* URLSessionDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcher.swift; sourceTree = "<group>"; };
+		E50ADF1C21F914FA002429A2 /* NetworkingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingResponse.swift; sourceTree = "<group>"; };
+		E50ADF1F21F92BEF002429A2 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		E5C8C4CA21E03038006CF79B /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C8C4CD21E03038006CF79B /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		E5C8C4CE21E03038006CF79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5C8C4D321E03038006CF79B /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C8C4D821E03038006CF79B /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		E5C8C4DA21E03038006CF79B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5C8C4E821E030AE006CF79B /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		E5C8C4EB21E030F1006CF79B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		E5C8C4ED21E0311B006CF79B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		E5C8C4EF21E0313D006CF79B /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		E5C8C4F221E03188006CF79B /* NSErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSErrorExtensions.swift; sourceTree = "<group>"; };
+		E5C8C4F421E031AF006CF79B /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
+		E5C8C4F721E0341D006CF79B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E5C8C4F921E03449006CF79B /* NetworkDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDispatcher.swift; sourceTree = "<group>"; };
+		E5C8C4FB21E03472006CF79B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +76,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E50ADF1121F90C31002429A2 /* Dispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				E50ADF1921F90DF9002429A2 /* Commons */,
+				E50ADF1A21F90E10002429A2 /* URLSessionDispatcher.swift */,
+			);
+			path = Dispatcher;
+			sourceTree = "<group>";
+		};
+		E50ADF1921F90DF9002429A2 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				E5C8C4FB21E03472006CF79B /* Configuration.swift */,
+				E5C8C4F921E03449006CF79B /* NetworkDispatcher.swift */,
+				E50ADF1421F90CAF002429A2 /* NetworkingOperation.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 		E5C8C4C021E03038006CF79B = {
 			isa = PBXGroup;
 			children = (
@@ -71,8 +116,12 @@
 		E5C8C4CC21E03038006CF79B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E5C8C4CD21E03038006CF79B /* Networking.h */,
-				E5C8C4CE21E03038006CF79B /* Info.plist */,
+				E5C8C4F121E03168006CF79B /* Extensions */,
+				E5C8C4EA21E030DE006CF79B /* Models */,
+				E5C8C4E521E03087006CF79B /* Utils */,
+				E5C8C4F621E03386006CF79B /* Protocols */,
+				E50ADF1121F90C31002429A2 /* Dispatcher */,
+				E5C8C4E421E03053006CF79B /* SupportingFiles */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -84,6 +133,52 @@
 				E5C8C4DA21E03038006CF79B /* Info.plist */,
 			);
 			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		E5C8C4E421E03053006CF79B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E5C8C4CD21E03038006CF79B /* Networking.h */,
+				E5C8C4CE21E03038006CF79B /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E5C8C4E521E03087006CF79B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E50ADF1F21F92BEF002429A2 /* Parser.swift */,
+				E5C8C4E821E030AE006CF79B /* URLHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E5C8C4EA21E030DE006CF79B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5C8C4EB21E030F1006CF79B /* Request.swift */,
+				E5C8C4ED21E0311B006CF79B /* Response.swift */,
+				E5C8C4EF21E0313D006CF79B /* NetworkingError.swift */,
+				E50ADF1C21F914FA002429A2 /* NetworkingResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5C8C4F121E03168006CF79B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E5C8C4F221E03188006CF79B /* NSErrorExtensions.swift */,
+				E5C8C4F421E031AF006CF79B /* DataExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5C8C4F621E03386006CF79B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E5C8C4F721E0341D006CF79B /* Service.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +243,7 @@
 				TargetAttributes = {
 					E5C8C4C921E03038006CF79B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					E5C8C4D221E03038006CF79B = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +290,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50ADF2021F92BEF002429A2 /* Parser.swift in Sources */,
+				E5C8C4EE21E0311B006CF79B /* Response.swift in Sources */,
+				E50ADF1D21F914FA002429A2 /* NetworkingResponse.swift in Sources */,
+				E5C8C4F821E0341D006CF79B /* Service.swift in Sources */,
+				E5C8C4EC21E030F1006CF79B /* Request.swift in Sources */,
+				E5C8C4E921E030AE006CF79B /* URLHelper.swift in Sources */,
+				E5C8C4F521E031AF006CF79B /* DataExtensions.swift in Sources */,
+				E5C8C4FC21E03472006CF79B /* Configuration.swift in Sources */,
+				E5C8C4FA21E03449006CF79B /* NetworkDispatcher.swift in Sources */,
+				E50ADF1B21F90E10002429A2 /* URLSessionDispatcher.swift in Sources */,
+				E5C8C4F021E0313D006CF79B /* NetworkingError.swift in Sources */,
+				E50ADF1521F90CAF002429A2 /* NetworkingOperation.swift in Sources */,
+				E5C8C4F321E03188006CF79B /* NSErrorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +450,7 @@
 		E5C8C4DF21E03038006CF79B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -348,8 +458,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Networking/SupportingFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +469,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bocato.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +478,7 @@
 		E5C8C4E021E03038006CF79B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -373,8 +486,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Networking/SupportingFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +505,7 @@
 		E5C8C4E221E03038006CF79B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LJ52F3Z7TA;
 				INFOPLIST_FILE = NetworkingTests/Info.plist;
@@ -409,6 +524,7 @@
 		E5C8C4E321E03038006CF79B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LJ52F3Z7TA;
 				INFOPLIST_FILE = NetworkingTests/Info.plist;
