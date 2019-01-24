@@ -2,7 +2,7 @@
 Networking layer abstraction
 
 ******************************************
-* DISCLAIMER: This is not finished yet.  *
+* DISCLAIMER: This is not finished yet.  
 ******************************************
 
 
