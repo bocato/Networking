@@ -12,6 +12,7 @@ Networking layer abstraction
 let baseURL = URL(string: "https://something.com")!
 let configuration = Configuration(name: "SomeConfig", headers: nil, baseURL: baseURL)
 let dispatcher = URLSessionDispatcher(configuration: configuration)
+let service = PokemonService(dispatcher: dispatcher)
 ```
 
 ## Requests
