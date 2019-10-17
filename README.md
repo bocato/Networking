@@ -1,19 +1,9 @@
 # Networking
 Networking layer abstraction
 
-******************************************
-* DISCLAIMER: This is not finished yet.  
-******************************************
-
-
 ## Setup
 
-```swift
-let baseURL = URL(string: "https://something.com")!
-let configuration = Configuration(name: "SomeConfig", headers: nil, baseURL: baseURL)
-let dispatcher = URLSessionDispatcher(configuration: configuration)
-let service = PokemonService(dispatcher: dispatcher)
-```
+- Use as an abstraction and implement your own dispatcher or use the provided `URLSessionDispatcher` dispatcher,
 
 ## Requests
 
@@ -54,37 +44,80 @@ enum PokemonsRequest: Request {
 
 ## Service
 
+### Requesting Data
 
 ```swift
-struct Pokemon: Codable {
-    let name: String
-}
-
-class PokemonService: Service {
+final class PokemonsDataService: NetworkingService  {
     
-    private(set) var dispatcher: NetworkDispatcher
+    // MARK: - Properties
     
-    required init(dispatcher: NetworkDispatcher) {
+    var dispatcher: URLRequestDispatching
+    
+    // MARK: - Initialization
+    
+    init(dispatcher: URLRequestDispatching) {
         self.dispatcher = dispatcher
     }
     
-    func loadPokemonsList(completion: @escaping (_ response: [Pokemon]?, _ error: NetworkingError?) -> Void) {
+    // MARK: - ArtistLookupServiceProvider
+    
+    func getList(completion: @escaping (Result<Data, Error>) -> Void) {
         
-        let request: PokemonsRequest = .list(limit: 50)
-        let operation = NetworkingOperation<PokemonsRequest, [Pokemon]>(request: request)
+        let request: PokemonsRequest = .list
         
-        operation.execute(in: dispatcher) { (result, networkingError) in
-            
-            guard networkingError == nil else {
-                completion(nil, networkingError)
-                return
+        dispatcher.execute(request: request) { (result) in
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+            case .success(data):
+                guard let data = data else {
+                    completion(.failure(NSError()))
+                    return
+                }
+                completion(data)
             }
-            
-            completion(result, nil)
-            
         }
         
     }
     
 }
+```
 
+### Requesting Codable Objects
+
+```swift
+final class PokemonsDataService: CodableRequesting  {
+    
+    // MARK: - Properties
+    
+    var dispatcher: URLRequestDispatching
+    
+    // MARK: - Initialization
+    
+    init(dispatcher: URLRequestDispatching) {
+        self.dispatcher = dispatcher
+    }
+    
+    // MARK: - ArtistLookupServiceProvider
+    
+    func getList(completion: @escaping (Result<[Pokemon], NetworkingError>) -> Void) {
+        
+        let request: PokemonsRequest = .list
+        
+        requestCodable(request, ofType: [Pokemon].self) { (networkingResult) in
+            switch networkingResult {
+            case let .failure(error):
+                completion(.failure(error))
+            case .success(data):
+                guard let data = data else {
+                    completion(.failure(.noData))
+                    return
+                }
+                completion(data)
+            }
+        }
+        
+    }
+    
+}
+```
