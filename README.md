@@ -3,7 +3,7 @@ Networking layer abstraction
 
 ## Setup
 
-- Use as an abstraction and implement your own dispatcher or use the provided `URLSessionDispatcher` dispatcher,
+- Use as an abstraction and implement your own dispatcher or use the provided `URLSessionDispatcher`.
 
 ## Requests
 
@@ -59,7 +59,7 @@ final class PokemonsDataService: NetworkingService  {
         self.dispatcher = dispatcher
     }
     
-    // MARK: - ArtistLookupServiceProvider
+    // MARK: - Requests
     
     func getList(completion: @escaping (Result<Data, Error>) -> Void) {
         
@@ -98,7 +98,7 @@ final class PokemonsDataService: CodableRequesting  {
         self.dispatcher = dispatcher
     }
     
-    // MARK: - ArtistLookupServiceProvider
+    // MARK: - Requests
     
     func getList(completion: @escaping (Result<[Pokemon], NetworkingError>) -> Void) {
         
