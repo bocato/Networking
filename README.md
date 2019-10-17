@@ -3,7 +3,7 @@ Networking layer abstraction
 
 ## Setup
 
-- Use as an abstraction and implement your own dispatcher or use the provided `URLSessionDispatcher` dispatcher,
+- Use as an abstraction and implement your own dispatcher or use the provided `URLSessionDispatcher`.
 
 ## Requests
 
