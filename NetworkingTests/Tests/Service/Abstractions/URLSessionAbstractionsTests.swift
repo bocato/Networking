@@ -2,7 +2,7 @@
 //  URLSessionAbstractionsTests.swift
 //  NetworkingTests
 //
-//  Created by Gabriela Coelho on 02/10/19.
+//  Created by Eduardo Sanches Bocato on 02/10/19.
 //  Copyright © 2019 Bocato. All rights reserved.
 //
 
