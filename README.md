@@ -1,4 +1,4 @@
-# Networking
+# Networking [![codecov](https://codecov.io/gh/bocato/Networking/branch/master/graph/badge.svg)](https://codecov.io/gh/bocato/Networking)
 Networking layer abstraction
 
 ## Setup

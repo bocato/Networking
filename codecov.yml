@@ -28,4 +28,3 @@ comment:
 ignore:
  - "*Test/.*" # ignore Tests from code coverage
  - "*Tests/.*" # ignore Tests from code coverage
-
