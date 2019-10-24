@@ -38,46 +38,51 @@ public final class URLSessionDispatcher: URLRequestDispatching {
     
     @discardableResult
     public func execute(
+        on queue: DispatchQueue,
         request: URLRequestProtocol,
         completion: @escaping (Result<Data?, URLRequestError>) -> Void
     ) -> URLRequestToken? {
         
         var urlRequestToken: URLRequestToken?
         
-        do {
+        queue.async {
             
-            let urlRequest = try requestBuilderType
-                .init(request: request)
-                .build() as NSURLRequest
-            
-            let dataTask = session.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
+            do {
                 
-                guard let httpResponse = urlResponse as? HTTPURLResponse else {
-                    completion(.failure(.invalidHTTPURLResponse))
-                    return
-                }
+                let urlRequest = try self.requestBuilderType
+                    .init(request: request)
+                    .build() as NSURLRequest
                 
-                let dataTaskResponse = DataTaskResponse(
-                    data: data,
-                    error: error,
-                    httpResponse: httpResponse
-                )
-                
-                if let urlRequestError = self?.parseErrors(in: dataTaskResponse) {
-                    completion(.failure(urlRequestError))
-                } else {
-                    guard let data = data else {
-                        completion(.success(nil))
+                let dataTask = self.session.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
+                    
+                    guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                        completion(.failure(.invalidHTTPURLResponse))
                         return
                     }
-                    completion(.success(data))
+                    
+                    let dataTaskResponse = DataTaskResponse(
+                        data: data,
+                        error: error,
+                        httpResponse: httpResponse
+                    )
+                    
+                    if let urlRequestError = self?.parseErrors(in: dataTaskResponse) {
+                        completion(.failure(urlRequestError))
+                    } else {
+                        guard let data = data else {
+                            completion(.success(nil))
+                            return
+                        }
+                        completion(.success(data))
+                    }
                 }
+                urlRequestToken = URLRequestTokenHolder(task: dataTask)
+                dataTask.resume()
+                
+            } catch {
+                completion(.failure(.requestBuilderFailed))
             }
-            urlRequestToken = URLRequestTokenHolder(task: dataTask)
-            dataTask.resume()
             
-        } catch {
-            completion(.failure(.requestBuilderFailed))
         }
         
         return urlRequestToken

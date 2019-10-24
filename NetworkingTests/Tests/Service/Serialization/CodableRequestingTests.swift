@@ -62,14 +62,14 @@ private class CodableRequestingService: CodableRequesting {
 }
 
 final class URLRequestDispatchingStub: URLRequestDispatching {
-    
+
     private let resultToReturn: Result<Data?, URLRequestError>
     
     init(resultToReturn: Result<Data?, URLRequestError>) {
         self.resultToReturn = resultToReturn
     }
     
-    func execute(request: URLRequestProtocol, completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
+    func execute(on queue: DispatchQueue, request: URLRequestProtocol, completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
         completion(resultToReturn)
         return nil
     }
