@@ -26,5 +26,6 @@ comment:
   require_changes: no
 
 ignore:
+ - "/NetworkingTests/*"
  - "*Test/.*" # ignore Tests from code coverage
  - "*Tests/.*" # ignore Tests from code coverage
