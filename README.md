@@ -1,6 +1,14 @@
 # Networking [![codecov](https://codecov.io/gh/bocato/Networking/branch/master/graph/badge.svg)](https://codecov.io/gh/bocato/Networking)
 Networking layer abstraction
 
+## Instalation
+
+Add this to Cartfile:
+`git "https://github.com/bocato/Networking.git" ~> 1.0`
+
+Then:
+`$ carthage update`
+
 ## Setup
 
 - Use as an abstraction and implement your own dispatcher or use the provided `URLSessionDispatcher`.
