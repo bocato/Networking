@@ -1,4 +1,7 @@
-# Networking [![codecov](https://codecov.io/gh/bocato/Networking/branch/master/graph/badge.svg)](https://codecov.io/gh/bocato/Networking)
+# Networking 
+[![codecov](https://codecov.io/gh/bocato/Networking/branch/master/graph/badge.svg)](https://codecov.io/gh/bocato/Networking)
+[![CodeFactor](https://www.codefactor.io/repository/github/bocato/networking/badge)](https://www.codefactor.io/repository/github/bocato/networking)
+
 Networking layer abstraction
 
 ## Instalation
