@@ -160,6 +160,8 @@ final class AccessTokenAdapter: URLRequestAdapter {
 }
 ```
 
+The request will be like this:
+
 ```swift
 enum PokemonsRequest: Request {
     
