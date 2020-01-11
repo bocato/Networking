@@ -8,7 +8,7 @@ Networking layer abstraction
 
 Add this to Cartfile:
 
-`git "https://github.com/bocato/Networking.git" ~> 1.0`
+`git "https://github.com/bocato/Networking.git" ~> 1.1`
 
 Then:
 
@@ -64,11 +64,11 @@ final class PokemonsDataService: NetworkingService  {
     
     // MARK: - Properties
     
-    var dispatcher: URLRequestDispatching
+    var dispatcher: URLRequestDispatcher
     
     // MARK: - Initialization
     
-    init(dispatcher: URLRequestDispatching) {
+    init(dispatcher: URLRequestDispatcher) {
         self.dispatcher = dispatcher
     }
     
@@ -132,5 +132,45 @@ final class PokemonsDataService: CodableRequesting  {
         
     }
     
+}
+```
+
+#### URLRequestAdapter
+
+The `URLRequestAdapter` protocol allows each request that conforms with `URLRequestProtocol` request made on a `URLRequestDispatcher` to be inspected and adapted before being created. 
+One very specific way to use an adapter is to append an `Authorization` header to requests behind a certain type of authentication.
+
+```swift
+final class AccessTokenAdapter: URLRequestAdapter {
+    private let accessToken: String
+
+    init(accessToken: String) {
+        self.accessToken = accessToken
+    }
+
+    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        var urlRequest = urlRequest
+
+        if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix("https://httpbin.org") {
+            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        }
+
+        return urlRequest
+    }
+}
+```
+
+```swift
+let dispatcher = URLSessionDispatcher()
+dispatcher.adapter = AccessTokenAdapter(accessToken: "1234")
+
+let request: PokemonsRequest = .list
+dispatcher.execute(request: request) { (result) in
+    switch result {
+    case let .failure(error):
+        // Do something
+    case .success(data):
+        // Do something
+    }
 }
 ```

@@ -20,7 +20,7 @@
 		E5CE42B923344DCA00295277 /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CE42AB23344DC900295277 /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E5CE42EE23344F5800295277 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42ED23344F5800295277 /* NetworkingService.swift */; };
 		E5CE42F123344F6200295277 /* URLSessionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42EF23344F6200295277 /* URLSessionDispatcher.swift */; };
-		E5CE42F223344F6200295277 /* URLRequestDispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42F023344F6200295277 /* URLRequestDispatching.swift */; };
+		E5CE42F223344F6200295277 /* URLRequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42F023344F6200295277 /* URLRequestDispatcher.swift */; };
 		E5CE42F523344F8500295277 /* URLRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42F323344F8500295277 /* URLRequestProtocol.swift */; };
 		E5CE42F623344F8500295277 /* URLRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42F423344F8500295277 /* URLRequestAdapter.swift */; };
 		E5CE42F823344FBE00295277 /* SimpleURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CE42F723344FBE00295277 /* SimpleURLRequest.swift */; };
@@ -63,7 +63,7 @@
 		E5CE42B823344DCA00295277 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5CE42ED23344F5800295277 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		E5CE42EF23344F6200295277 /* URLSessionDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDispatcher.swift; sourceTree = "<group>"; };
-		E5CE42F023344F6200295277 /* URLRequestDispatching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestDispatching.swift; sourceTree = "<group>"; };
+		E5CE42F023344F6200295277 /* URLRequestDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestDispatcher.swift; sourceTree = "<group>"; };
 		E5CE42F323344F8500295277 /* URLRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestProtocol.swift; sourceTree = "<group>"; };
 		E5CE42F423344F8500295277 /* URLRequestAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestAdapter.swift; sourceTree = "<group>"; };
 		E5CE42F723344FBE00295277 /* SimpleURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleURLRequest.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		E5CE42C923344E0D00295277 /* Dispatcher */ = {
 			isa = PBXGroup;
 			children = (
-				E5CE42F023344F6200295277 /* URLRequestDispatching.swift */,
+				E5CE42F023344F6200295277 /* URLRequestDispatcher.swift */,
 				E5CE42EF23344F6200295277 /* URLSessionDispatcher.swift */,
 			);
 			path = Dispatcher;
@@ -456,7 +456,7 @@
 				E5CE4309233450A400295277 /* NSErrorExtension.swift in Sources */,
 				E5CE43062334503500295277 /* NetworkingError.swift in Sources */,
 				E5CE430223344FCA00295277 /* URLRequestBuilder.swift in Sources */,
-				E5CE42F223344F6200295277 /* URLRequestDispatching.swift in Sources */,
+				E5CE42F223344F6200295277 /* URLRequestDispatcher.swift in Sources */,
 				E5CE430F2334517300295277 /* CodableSerializing.swift in Sources */,
 				E5CE42EE23344F5800295277 /* NetworkingService.swift in Sources */,
 				E5CE4311233456CF00295277 /* CodableRequesting.swift in Sources */,

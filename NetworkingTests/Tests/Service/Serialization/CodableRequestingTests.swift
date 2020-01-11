@@ -20,7 +20,7 @@ final class CodableRequestingTests: XCTestCase {
             return
         }
         let resultToReturn: Result<Data?, URLRequestError> = .success(validDataToReturn)
-        let urlRequestDispatchingStub = URLRequestDispatchingStub(
+        let urlRequestDispatcherStub = URLRequestDispatcherStub(
             resultToReturn: resultToReturn
         )
         guard let url = URL(string: "http://www.someurl.com/") else {
@@ -29,7 +29,7 @@ final class CodableRequestingTests: XCTestCase {
         }
         let request: SimpleURLRequest = .init(url: url)
         let expectedCodableResult = SomeResponse(value: "something")
-        let sut = CodableRequestingService(dispatcher: urlRequestDispatchingStub)
+        let sut = CodableRequestingService(dispatcher: urlRequestDispatcherStub)
         
         // When
         let requestCodableExpectation = expectation(description: "serializeCodableExpectation")
@@ -53,17 +53,19 @@ final class CodableRequestingTests: XCTestCase {
 // MARK: - Testing Helpers
 private class CodableRequestingService: CodableRequesting {
     
-    var dispatcher: URLRequestDispatching
+    var dispatcher: URLRequestDispatcher
     
-    init(dispatcher: URLRequestDispatching) {
+    init(dispatcher: URLRequestDispatcher) {
         self.dispatcher = dispatcher
     }
     
 }
 
-final class URLRequestDispatchingStub: URLRequestDispatching {
+final class URLRequestDispatcherStub: URLRequestDispatcher {
 
     private let resultToReturn: Result<Data?, URLRequestError>
+    
+    var adapter: URLRequestAdapter?
     
     init(resultToReturn: Result<Data?, URLRequestError>) {
         self.resultToReturn = resultToReturn

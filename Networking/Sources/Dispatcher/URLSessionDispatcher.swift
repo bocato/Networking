@@ -6,14 +6,6 @@
 //  Copyright © 2019 Bocato. All rights reserved.
 //
 
-//
-//  URLSessionDispatcher.swift
-//  Networking
-//
-//  Created by Eduardo Sanches Bocato on 27/09/19.
-//  Copyright © 2019 Bocato. All rights reserved.
-//
-
 import Foundation
 
 private struct DataTaskResponse {
@@ -22,12 +14,16 @@ private struct DataTaskResponse {
     let httpResponse: HTTPURLResponse
 }
 
-public final class URLSessionDispatcher: URLRequestDispatching {
+public final class URLSessionDispatcher: URLRequestDispatcher {
     
-    // MARK: - Properties
+    // MARK: - Private Properties
     
-    private var session: URLSessionProtocol
-    private var requestBuilderType: URLRequestBuilder.Type
+    private let session: URLSessionProtocol
+    private let requestBuilderType: URLRequestBuilder.Type
+    
+    // MARK: - Public Properties
+    
+    public var adapter: URLRequestAdapter?
     
     // MARK: - Initialization
     
@@ -36,10 +32,10 @@ public final class URLSessionDispatcher: URLRequestDispatching {
     /// - Parameter session: An URLSession.
     public required init(
         session: URLSessionProtocol = URLSession.shared,
-        requestBuilderType: URLRequestBuilder.Type = DefaultURLRequestBuilder.self
+        requestBuilderType: URLRequestBuilder.Type? = nil
     ) {
         self.session = session
-        self.requestBuilderType = requestBuilderType
+        self.requestBuilderType = requestBuilderType ?? DefaultURLRequestBuilder.self
     }
     
     // MARK: - Public
@@ -53,11 +49,14 @@ public final class URLSessionDispatcher: URLRequestDispatching {
         
         var urlRequestToken: URLRequestToken?
         
+        let requestBuilder = requestBuilderType.init(request: request)
+        if let adapter = adapter {
+            requestBuilder.add(adapter: adapter)
+        }
+        
         do {
             
-            let urlRequest = try requestBuilderType
-                .init(request: request)
-                .build() as NSURLRequest
+            let urlRequest = try requestBuilder.build() as NSURLRequest
             
             dispatch(request: urlRequest, urlRequestToken: &urlRequestToken) { result in
                 queue.async { completion(result) }

@@ -127,7 +127,7 @@ final class DefaultURLRequestBuilderTests: XCTestCase {
 
 // MARK: - Testing Helpers
 
-private final class URLRequestAdapterSpy: URLRequestAdapter {
+final class URLRequestAdapterSpy: URLRequestAdapter {
     private(set) var adaptCalled = false
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         adaptCalled = true

@@ -277,6 +277,39 @@ final class URLSessionDispatcherTests: XCTestCase {
         }
     }
     
+    func test_whenAdapterAndSucceed_adaptShouldBeCalled() {
+        // Given
+        guard let url = URL(string: "http://www.someurl.com/") else {
+            XCTFail("Could not create URL.")
+            return
+        }
+        let urlResponse = HTTPURLResponse(
+            url: url,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )
+        let urlSessionStub = URLSessionStub(
+            data: nil,
+            urlResponse: urlResponse
+        )
+        let sut = URLSessionDispatcher(session: urlSessionStub)
+        let request: SimpleURLRequest = .init(url: url)
+        
+        let adapterSpy = URLRequestAdapterSpy()
+        sut.adapter = adapterSpy
+
+        // When
+        let executeRequestExpectation = expectation(description: "executeRequestExpectation")
+        sut.execute(request: request) { _ in
+            executeRequestExpectation.fulfill()
+        }
+        wait(for: [executeRequestExpectation], timeout: 1.0)
+
+        // Then
+        XCTAssertTrue(adapterSpy.adaptCalled, "adapt method should have been called.")
+    }
+    
 }
 
 // MARK: - Testing Helpers

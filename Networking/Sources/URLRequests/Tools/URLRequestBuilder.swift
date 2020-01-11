@@ -66,7 +66,7 @@ public protocol URLRequestBuilder {
     func build() throws -> URLRequest
 }
 
-public final class DefaultURLRequestBuilder: URLRequestBuilder {
+final class DefaultURLRequestBuilder: URLRequestBuilder {
     
     // MARK: - Properties
     
@@ -75,7 +75,7 @@ public final class DefaultURLRequestBuilder: URLRequestBuilder {
     private var method: HTTPMethod = .get
     private var headers: [String: String]?
     private var parameters: URLRequestParameters?
-    private var adapters: [URLRequestAdapter] = []
+    private var adapter: URLRequestAdapter?
     
     // MARK: - Initialization
     
@@ -87,7 +87,6 @@ public final class DefaultURLRequestBuilder: URLRequestBuilder {
         self.method = request.method
         self.headers = request.headers
         self.parameters = request.parameters
-        self.adapters = request.adapters ?? []
     }
     
     /// Initializes the request.
@@ -149,7 +148,7 @@ public final class DefaultURLRequestBuilder: URLRequestBuilder {
     /// - Returns: Itself, for sugar syntax purposes.
     @discardableResult
     public func add(adapter: URLRequestAdapter) -> Self {
-        adapters.append(adapter)
+        self.adapter = adapter
         return self
     }
     
@@ -174,8 +173,8 @@ public final class DefaultURLRequestBuilder: URLRequestBuilder {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
         }
         
-        try adapters.forEach {
-            urlRequest = try $0.adapt(urlRequest)
+        if let adapter = adapter {
+            urlRequest = try adapter.adapt(urlRequest)
         }
         
         return urlRequest

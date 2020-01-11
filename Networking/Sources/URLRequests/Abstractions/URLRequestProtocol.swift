@@ -26,7 +26,7 @@ public protocol URLRequestProtocol {
     /// Defines the list of headers we want to pass along with each request.
     var headers: [String: String]? { get }
     
-    /// Defines the adapters for the request
-    var adapters: [URLRequestAdapter]? { get }
+//    /// Defines the adapters for the request
+//    var adapters: [URLRequestAdapter]? { get set }
     
 }
