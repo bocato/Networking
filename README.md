@@ -45,7 +45,7 @@ enum PokemonsRequest: Request {
     
     var parameters: RequestParameters? {
         switch self {
-        case .list(let limit):
+        case let .list(limit):
             guard let limit = limit else { return nil }
             return .url(["limit": limit])
         }
@@ -130,6 +130,72 @@ final class PokemonsDataService: CodableRequesting  {
             }
         }
         
+    }
+    
+}
+```
+
+#### URLRequestAdapter
+
+The `URLRequestAdapter` protocol allows each request that conforms with `URLRequestProtocol` request made on a `URLRequestDispatcher` to be inspected and adapted before being created. 
+One very specific way to use an adapter is to append an `Authorization` header to requests behind a certain type of authentication.
+
+```swift
+final class AccessTokenAdapter: URLRequestAdapter {
+    private let accessToken: String
+
+    init(accessToken: String) {
+        self.accessToken = accessToken
+    }
+
+    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        var urlRequest = urlRequest
+
+        if let urlString = urlRequest.url?.absoluteString, urlString.hasPrefix("https://httpbin.org") {
+            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        }
+
+        return urlRequest
+    }
+}
+```
+
+```swift
+enum PokemonsRequest: Request {
+    
+    case list(limit: Int?, accessToken: String)
+    
+    var path: String {
+        switch self {
+        case .list:
+            return "pokemon"
+        }
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .list:
+            return .get
+        }
+    }
+    
+    var headers: [String : String]? {
+        return nil
+    }
+    
+    var parameters: RequestParameters? {
+        switch self {
+        case let .list(limit):
+            guard let limit = limit else { return nil }
+            return .url(["limit": limit])
+        }
+    }
+    
+    var adapters: [URLRequestAdapters]? {
+        switch self {
+            case let .list(_, accessToken):
+            return [AccessTokenAdapter(accessToken: accessToken)]
+        }
     }
     
 }
